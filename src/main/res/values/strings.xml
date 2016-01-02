@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">hh-app-rater</string>
+
+    <string name="apprater.dialog.header">Rate this app</string>
+    <string name="apprater.dialog.message">If you enjoy using this app, would you mind taking a moment to rate it? It won\'t take more than a minute. Thanks for your support!</string>
+    <string name="apprater.dialog.ok">Rate now</string>
+    <string name="apprater.dialog.cancel">Later</string>
+    <string name="apprater.dialog.no">No, thanks</string>
+
+    <string name="play.store.url">https://play.google.com/store/apps/details?id=</string>
+    <string name="amazon.store.url">http://www.amazon.com/gp/mas/dl/android?p=</string>
+</resources>
