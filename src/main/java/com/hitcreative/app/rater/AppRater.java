@@ -4,12 +4,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
-import android.util.Log;
 import android.widget.Button;
-
-import java.util.Date;
 
 /**
  * Created by applabdev2 on 15.12.2015..
@@ -21,8 +17,6 @@ public class AppRater {
     private static PreferenceUtils preferenceUtils;
     private static Context context;
     private static AppRaterConfig config;
-    private boolean exceededLaunchTimes;
-    private static boolean raterActive;
 
     private AppRater(Context context) {
         this.context = context;
@@ -54,23 +48,6 @@ public class AppRater {
         return isExceededLaunchTimes() && isRaterActive();
     }
 
-    /*
-    private static boolean shouldShowRateDialog() {
-        if (mOptOut) {
-            return false;
-        } else {
-            if (mLaunchTimes >= sConfig.mCriteriaLaunchTimes) {
-                return true;
-            }
-            long threshold = sConfig.mCriteriaInstallDays * 24 * 60 * 60 * 1000L;    // msec
-            if (new Date().getTime() - mInstallDate.getTime() >= threshold) {
-                return true;
-            }
-            return false;
-        }
-    }
-*/
-
     public static void showRateDialog(final Context context) {
         final AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle(context.getResources().getString(config.getHeaderResourceId()));
@@ -79,7 +56,7 @@ public class AppRater {
         builder.setPositiveButton(context.getResources().getString(config.getPositiveButtonId()), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                registerListener(dialog,which);
+                registerListener(dialog, which);
                 preferenceUtils.setRaterStatus(false);
                 String packageName = context.getPackageName();
                 Uri storeUri = Uri.parse(context.getString(R.string.play_store_url) + packageName);
@@ -94,7 +71,7 @@ public class AppRater {
         builder.setNeutralButton(context.getResources().getString(config.getNeutralButtonId()), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                registerListener(dialog,which);
+                registerListener(dialog, which);
                 preferenceUtils.setLaunchTime(0);
             }
         });
@@ -102,7 +79,7 @@ public class AppRater {
         builder.setNegativeButton(context.getResources().getString(config.getNegativeButtonId()), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                registerListener(dialog,which);
+                registerListener(dialog, which);
                 preferenceUtils.setRaterStatus(false);
             }
         });
