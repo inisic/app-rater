@@ -13,6 +13,7 @@ public class AppRaterConfig {
     private int launchDate;
     private int headerResourceId;
     private int messageResourceId;
+    private int alertDialogStyleResourceId;
     private int positiveButtonId;
     private int negativeButtonId;
     private int neutralButtonId;
@@ -23,12 +24,14 @@ public class AppRaterConfig {
         private int launchDate;
         private int launchTimes = 0;
         private int headerResourceId;
-        private int messageResourceId;
+        private int messageResourceId = 0;
+        private int alertDialogStyleResourceId;
         private int positiveButtonId = 0;
         private int negativeButtonId = 0;
         private int neutralButtonId = 0;
         private StoreType storeType = StoreType.GOOGLE_PLAY;
         private View.OnClickListener buttonListener;
+
 
         public Builder launchTimes(int launchTimes) {
             this.launchTimes = launchTimes;
@@ -47,6 +50,11 @@ public class AppRaterConfig {
 
         public Builder messageId(int messageResourceId) {
             this.messageResourceId = messageResourceId;
+            return this;
+        }
+
+        public Builder alertDialogStyleResourceId(int alertDialogStyleResourceId) {
+            this.alertDialogStyleResourceId = alertDialogStyleResourceId;
             return this;
         }
 
@@ -86,6 +94,7 @@ public class AppRaterConfig {
         this.launchTimes = builder.launchTimes != 0 ? builder.launchTimes : R.integer.defaultLaunchTimes;
         this.headerResourceId = builder.headerResourceId != 0 ? builder.headerResourceId : R.string.apprater_dialog_header;
         this.messageResourceId = builder.messageResourceId != 0 ? builder.messageResourceId : R.string.apprater_dialog_message;
+        this.alertDialogStyleResourceId = builder.alertDialogStyleResourceId !=0 ? builder.alertDialogStyleResourceId : R.style.alertDialogStyle;
         this.positiveButtonId = builder.positiveButtonId!= 0 ? builder.positiveButtonId : R.string.apprater_dialog_ok;
         this.negativeButtonId = builder.negativeButtonId!= 0 ? builder.negativeButtonId : R.string.apprater_dialog_no;
         this.neutralButtonId= builder.neutralButtonId!= 0 ? builder.neutralButtonId : R.string.apprater_dialog_cancel;
@@ -107,6 +116,10 @@ public class AppRaterConfig {
 
     public int getMessageResourceId() {
         return messageResourceId;
+    }
+
+    public int getAlertDialogStyleResourceId() {
+        return alertDialogStyleResourceId;
     }
 
     public int getPositiveButtonId() {

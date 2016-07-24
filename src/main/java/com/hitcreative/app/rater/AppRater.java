@@ -49,7 +49,7 @@ public class AppRater {
     }
 
     public static void showRateDialog(final Context context) {
-        final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(context,config.getAlertDialogStyleResourceId());
         builder.setTitle(context.getResources().getString(config.getHeaderResourceId()));
         builder.setMessage(context.getResources().getString(config.getMessageResourceId()));
 
